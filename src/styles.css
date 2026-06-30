@@ -1,8 +1,10 @@
 /* Global Styles and Tailwind imports */
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
-  background-color: #0f172a; /* Slate-900 background */
-  color: #f1f5f9; /* Slate-100 text */
+  background-color: #020617; /* slate-950 background */
+  color: #f1f5f9; /* slate-100 text */
   font-family: ui-sans-serif, system-ui, sans-serif;
 }
