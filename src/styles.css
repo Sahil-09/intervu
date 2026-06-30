@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Styles and Tailwind imports */
+@import "tailwindcss";
+
+body {
+  background-color: #0f172a; /* Slate-900 background */
+  color: #f1f5f9; /* Slate-100 text */
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
