@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { VoiceService } from './services/voice.service';
 import { InterviewApiService } from './services/interview-api.service';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ import { InterviewApiService } from './services/interview-api.service';
 export class App implements OnInit, OnDestroy {
   // Navigation State
   currentScreen: 'setup' | 'interview' | 'report' = 'setup';
+  baseUrl = environment.apiUrl;
 
   // Setup Form State
   email = '';
