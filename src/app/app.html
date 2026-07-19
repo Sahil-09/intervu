@@ -1,5 +1,5 @@
 <main class="min-h-screen flex flex-col items-center justify-between p-4 md:p-8 bg-slate-950 text-slate-100">
-  
+
   <!-- Header / Navigation -->
   <header class="w-full max-w-6xl flex items-center justify-between py-4 border-b border-slate-800/80 mb-6 backdrop-blur-md sticky top-0 z-50">
     <div class="flex items-center space-x-3 cursor-pointer" (click)="resetSession()">
@@ -13,15 +13,14 @@
         <p class="text-xs text-slate-500 font-medium">AI Mock Interview Coach</p>
       </div>
     </div>
-    {{baseUrl}}
     <div class="flex items-center space-x-4">
       <span class="text-xs bg-slate-800/80 text-slate-400 border border-slate-700/60 px-2.5 py-1 rounded-full font-semibold flex items-center gap-1.5">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
         Homelab Pro
       </span>
-      <button 
-        *ngIf="currentScreen !== 'setup'" 
-        (click)="resetSession()" 
+      <button
+        *ngIf="currentScreen !== 'setup'"
+        (click)="resetSession()"
         class="text-xs text-slate-400 hover:text-white bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-lg transition-all hover:bg-slate-800"
       >
         Exit Session
@@ -44,7 +43,7 @@
 
   <!-- SCREEN 1: INTERVIEW SETUP -->
   <section *ngIf="currentScreen === 'setup'" class="w-full max-w-4xl grid md:grid-cols-5 gap-8 items-start my-auto animate-fadeIn">
-    
+
     <!-- Hero Branding Side (2 Columns) -->
     <div class="md:col-span-2 space-y-6 text-left">
       <div class="space-y-3">
@@ -78,9 +77,9 @@
     <!-- Upload and Form Card (3 Columns) -->
     <div class="md:col-span-3 bg-slate-900/60 border border-slate-800/60 backdrop-blur-xl rounded-2xl p-6 md:p-8 space-y-6 shadow-xl shadow-slate-950/50">
       <h3 class="text-xl font-bold text-white border-b border-slate-800/80 pb-3">Launch Practice Session</h3>
-      
+
       <!-- Drag and Drop Resume Dropzone -->
-      <div 
+      <div
         (dragover)="onDragOver($event)"
         (dragleave)="onDragLeave()"
         (drop)="onDrop($event)"
@@ -88,14 +87,14 @@
         [class.bg-blue-500\/5]="dragOver"
         class="border-2 border-dashed border-slate-700/60 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer transition-all hover:border-slate-600/80 hover:bg-slate-800/20 relative"
       >
-        <input 
-          type="file" 
-          id="resumeFile" 
-          (change)="onFileSelected($event)" 
-          class="absolute inset-0 opacity-0 cursor-pointer" 
+        <input
+          type="file"
+          id="resumeFile"
+          (change)="onFileSelected($event)"
+          class="absolute inset-0 opacity-0 cursor-pointer"
           accept="application/pdf"
         />
-        
+
         <div class="w-12 h-14 rounded-lg bg-slate-800/80 flex items-center justify-center border border-slate-700/60 mb-3 shadow">
           <span class="text-xs font-bold text-slate-400">PDF</span>
         </div>
@@ -117,19 +116,19 @@
       <div class="grid md:grid-cols-2 gap-4">
         <div class="space-y-1 text-left">
           <label class="text-xs font-bold text-slate-400 uppercase tracking-wider">Email Address</label>
-          <input 
-            type="email" 
-            [(ngModel)]="email" 
-            placeholder="sahil@example.com" 
+          <input
+            type="email"
+            [(ngModel)]="email"
+            placeholder="sahil@example.com"
             class="w-full bg-slate-950 border border-slate-800/80 rounded-lg px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-blue-500/80"
           />
         </div>
         <div class="space-y-1 text-left">
           <label class="text-xs font-bold text-slate-400 uppercase tracking-wider">Full Name (Optional)</label>
-          <input 
-            type="text" 
-            [(ngModel)]="firstName" 
-            placeholder="Sahil Patel" 
+          <input
+            type="text"
+            [(ngModel)]="firstName"
+            placeholder="Sahil Patel"
             class="w-full bg-slate-950 border border-slate-800/80 rounded-lg px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-blue-500/80"
           />
         </div>
@@ -138,8 +137,8 @@
       <div class="grid md:grid-cols-3 gap-3">
         <div class="space-y-1 text-left">
           <label class="text-xs font-bold text-slate-400 uppercase tracking-wider">Target Job Role</label>
-          <select 
-            [(ngModel)]="targetRole" 
+          <select
+            [(ngModel)]="targetRole"
             class="w-full bg-slate-950 border border-slate-800/80 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-blue-500/80"
           >
             <option value="Senior Fullstack Engineer">Fullstack Engineer</option>
@@ -152,8 +151,8 @@
 
         <div class="space-y-1 text-left">
           <label class="text-xs font-bold text-slate-400 uppercase tracking-wider">Seniority Level</label>
-          <select 
-            [(ngModel)]="experienceLevel" 
+          <select
+            [(ngModel)]="experienceLevel"
             class="w-full bg-slate-950 border border-slate-800/80 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-blue-500/80"
           >
             <option value="Junior">Junior (0-2 YOE)</option>
@@ -165,8 +164,8 @@
 
         <div class="space-y-1 text-left">
           <label class="text-xs font-bold text-slate-400 uppercase tracking-wider">Interview Type</label>
-          <select 
-            [(ngModel)]="interviewType" 
+          <select
+            [(ngModel)]="interviewType"
             class="w-full bg-slate-950 border border-slate-800/80 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-blue-500/80"
           >
             <option value="Technical">Technical (Coding & System)</option>
@@ -176,8 +175,8 @@
         </div>
       </div>
 
-      <button 
-        (click)="startInterview()" 
+      <button
+        (click)="startInterview()"
         [disabled]="!selectedFile || !email"
         class="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 disabled:from-slate-800 disabled:to-slate-800 disabled:text-slate-500 text-white font-bold rounded-xl transition-all hover:shadow-lg hover:shadow-blue-500/20 active:scale-[0.99] cursor-pointer"
       >
@@ -188,10 +187,10 @@
 
   <!-- SCREEN 2: ACTIVE INTERVIEW ROOM -->
   <section *ngIf="currentScreen === 'interview'" class="w-full max-w-5xl flex flex-col md:flex-row gap-6 my-auto items-stretch animate-fadeIn h-[calc(100vh-140px)]">
-    
+
     <!-- Visual Avatar / Interaction Console (Left) -->
     <div class="flex-1 md:w-[45%] bg-slate-900/60 border border-slate-800/60 rounded-2xl p-6 flex flex-col items-center justify-between shadow-lg">
-      
+
       <div class="text-center space-y-1">
         <h4 class="text-sm font-bold text-slate-400 uppercase tracking-wider">Active Interviewer</h4>
         <p class="text-xs text-blue-400 font-semibold">{{ targetRole }} ({{ experienceLevel }})</p>
@@ -200,19 +199,19 @@
       <!-- INTERVIEWER WAVE ANIMATION -->
       <div class="my-auto flex flex-col items-center space-y-6 py-6">
         <div class="relative flex items-center justify-center w-36 h-36 rounded-full bg-slate-950 border border-slate-800">
-          
+
           <!-- Outer Pulsing Glow -->
-          <div 
-            *ngIf="isAiSpeaking" 
+          <div
+            *ngIf="isAiSpeaking"
             class="absolute inset-0 rounded-full bg-blue-500/10 animate-ping"
           ></div>
-          <div 
-            *ngIf="voiceService.isListening()" 
+          <div
+            *ngIf="voiceService.isListening()"
             class="absolute inset-0 rounded-full bg-emerald-500/15 animate-ping"
           ></div>
 
           <!-- Face Icon -->
-          <div 
+          <div
             [class.from-blue-600]="isAiSpeaking"
             [class.to-indigo-500]="isAiSpeaking"
             [class.from-emerald-500]="voiceService.isListening()"
@@ -244,8 +243,8 @@
       <!-- Mic & Audio Controls -->
       <div class="flex items-center space-x-4">
         <!-- Speak / Synthesis Toggle -->
-        <button 
-          (click)="speakAiQuestion(currentQuestion)" 
+        <button
+          (click)="speakAiQuestion(currentQuestion)"
           class="p-3 bg-slate-950 border border-slate-800 rounded-xl hover:bg-slate-800 transition-all text-slate-300"
           title="Repeat Question"
         >
@@ -253,8 +252,8 @@
         </button>
 
         <!-- Main STT Recording Trigger -->
-        <button 
-          (click)="toggleMicrophone()" 
+        <button
+          (click)="toggleMicrophone()"
           [disabled]="isAiSpeaking || isLoading"
           [class.bg-emerald-600]="voiceService.isListening()"
           [class.hover:bg-emerald-500]="voiceService.isListening()"
@@ -273,7 +272,7 @@
 
     <!-- Active Conversation Transcript & Typing Panel (Right) -->
     <div class="flex-[1.2] md:w-[55%] bg-slate-900/60 border border-slate-800/60 rounded-2xl flex flex-col justify-between shadow-lg">
-      
+
       <!-- Top Title and Progress -->
       <div class="px-6 py-4 border-b border-slate-800/80 flex items-center justify-between">
         <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Mock Conversation</span>
@@ -287,19 +286,19 @@
 
       <!-- Dialogue History / Scroll Zone -->
       <div class="flex-1 overflow-y-auto p-6 space-y-4 text-left max-h-[calc(100vh-320px)] scrollbar-thin scrollbar-thumb-slate-800">
-        
+
         <div *ngFor="let turn of turns" class="flex flex-col space-y-1 animate-fadeIn">
-          
+
           <!-- Turn Bubble Wrapper -->
-          <div 
-            [class.items-end]="turn.speaker === 'CANDIDATE'" 
+          <div
+            [class.items-end]="turn.speaker === 'CANDIDATE'"
             [class.items-start]="turn.speaker === 'AI'"
             class="flex flex-col"
           >
             <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-0.5">
               {{ turn.speaker === 'AI' ? 'Interviewer' : 'You (Candidate)' }}
             </span>
-            <div 
+            <div
               [class.bg-blue-600\/20]="turn.speaker === 'AI'"
               [class.border-blue-500\/20]="turn.speaker === 'AI'"
               [class.text-blue-100]="turn.speaker === 'AI'"
@@ -337,16 +336,16 @@
       <!-- Typing Answer Form & Submission -->
       <div class="p-4 border-t border-slate-800/80 bg-slate-950/40 rounded-b-2xl">
         <form (submit)="submitAnswer()" class="flex items-stretch gap-3">
-          <input 
-            type="text" 
-            [(ngModel)]="userInput" 
+          <input
+            type="text"
+            [(ngModel)]="userInput"
             name="answerInput"
-            placeholder="Type your response here or speak using the mic console..." 
+            placeholder="Type your response here or speak using the mic console..."
             [disabled]="isAiSpeaking || isLoading"
             class="flex-1 bg-slate-950 border border-slate-800/80 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-blue-500/80"
           />
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             [disabled]="!userInput || isAiSpeaking || isLoading"
             class="px-5 bg-blue-600 hover:bg-blue-500 disabled:bg-slate-800 disabled:text-slate-500 text-white font-bold rounded-xl transition-all shadow-md active:scale-[0.98] cursor-pointer"
           >
@@ -355,9 +354,9 @@
         </form>
         <div class="flex items-center justify-between mt-2.5 px-1.5">
           <span class="text-[10px] text-slate-500 font-medium">Auto-finishes after turn 5</span>
-          <button 
-            *ngIf="turns.length > 2" 
-            (click)="loadFinalReport()" 
+          <button
+            *ngIf="turns.length > 2"
+            (click)="loadFinalReport()"
             class="text-[10px] text-rose-400 font-semibold hover:text-rose-300 uppercase tracking-wider"
           >
             Finish & Evaluate Now &rarr;
@@ -370,7 +369,7 @@
 
   <!-- SCREEN 3: COMPREHENSIVE PERFORMANCE REPORT CARD -->
   <section *ngIf="currentScreen === 'report'" class="w-full max-w-5xl space-y-8 my-auto animate-fadeIn pb-12">
-    
+
     <!-- Title Section -->
     <div class="text-center space-y-2">
       <span class="text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full font-bold uppercase tracking-wider">
@@ -382,7 +381,7 @@
 
     <!-- Top KPI Scorecards Grid -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      
+
       <!-- Scorecard 1: Overall -->
       <div class="bg-gradient-to-tr from-slate-900 to-slate-800 border border-slate-700/50 p-5 rounded-2xl flex flex-col items-center justify-center text-center shadow">
         <span class="text-3xl font-black bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent mb-1">
@@ -423,7 +422,7 @@
 
     <!-- Summary & Feedback Insights Block -->
     <div class="grid md:grid-cols-5 gap-6 items-stretch">
-      
+
       <!-- Detailed Prose Critique (3 Columns) -->
       <div class="md:col-span-3 bg-slate-900/60 border border-slate-800/60 rounded-2xl p-6 text-left space-y-4 flex flex-col justify-between">
         <div class="space-y-3">
@@ -439,7 +438,7 @@
 
       <!-- Strengths and Weaknesses Bullets (2 Columns) -->
       <div class="md:col-span-2 bg-slate-900/60 border border-slate-800/60 rounded-2xl p-6 text-left flex flex-col justify-between space-y-6">
-        
+
         <div class="space-y-3">
           <h4 class="text-xs font-bold text-blue-400 uppercase tracking-widest flex items-center gap-1.5">
             <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
@@ -473,7 +472,7 @@
     <!-- Complete Chronological Dialogue Transcript -->
     <div class="bg-slate-900/60 border border-slate-800/60 rounded-2xl p-6 text-left space-y-6 shadow-xl">
       <h3 class="text-lg font-extrabold text-white border-b border-slate-800 pb-2">Chronological Interview Transcript & Critiques</h3>
-      
+
       <div class="space-y-6">
         <div *ngFor="let turn of turns; let i = index" class="border-l-2 pl-4 space-y-2" [class.border-blue-500\/50]="turn.speaker === 'AI'" [class.border-slate-800]="turn.speaker === 'CANDIDATE'">
           <div class="flex items-center space-x-2">
@@ -507,8 +506,8 @@
 
     <!-- Actions / Retake Practice -->
     <div class="flex items-center justify-center space-x-4">
-      <button 
-        (click)="resetSession()" 
+      <button
+        (click)="resetSession()"
         class="px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold rounded-xl transition-all hover:shadow-lg hover:shadow-blue-500/20 active:scale-[0.99] cursor-pointer"
       >
         Retake Interview

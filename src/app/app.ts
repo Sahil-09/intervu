@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { VoiceService } from './services/voice.service';
@@ -47,6 +47,7 @@ export class App implements OnInit, OnDestroy {
   constructor(
     public voiceService: VoiceService,
     private apiService: InterviewApiService,
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {
@@ -77,6 +78,10 @@ export class App implements OnInit, OnDestroy {
 
   onDragLeave() {
     this.dragOver = false;
+  }
+
+  changeLoading(){
+    this.isLoading = !this.isLoading
   }
 
   onDrop(event: DragEvent) {
@@ -124,7 +129,7 @@ export class App implements OnInit, OnDestroy {
           this.lastCritique = null;
           this.currentScreen = 'interview';
           this.isLoading = false;
-
+          this.cdr.markForCheck();
           // AI speaks the first question
           this.speakAiQuestion(res.firstQuestion);
         },
@@ -132,6 +137,7 @@ export class App implements OnInit, OnDestroy {
           console.error(err);
           this.errorMessage = 'Failed to setup interview session. Please verify your Postgres database or AI service is connected.';
           this.isLoading = false;
+          this.cdr.markForCheck();
         },
       });
   }
@@ -172,15 +178,16 @@ export class App implements OnInit, OnDestroy {
           this.currentQuestion = res.nextQuestion;
           this.turns.push({ speaker: 'AI', message: res.nextQuestion });
           this.turnCount++;
-
           // AI speaks out the next question
           this.speakAiQuestion(res.nextQuestion);
         }
+        this.cdr.markForCheck();
       },
       error: (err) => {
         console.error(err);
         this.errorMessage = 'Failed to submit answer turn.';
         this.isLoading = false;
+        this.cdr.markForCheck();
       },
     });
   }
@@ -199,11 +206,13 @@ export class App implements OnInit, OnDestroy {
         this.turns = res.turns;
         this.currentScreen = 'report';
         this.isLoading = false;
+        this.cdr.markForCheck();
       },
       error: (err) => {
         console.error(err);
         this.errorMessage = 'Failed to load the final report card.';
         this.isLoading = false;
+        this.cdr.markForCheck();
       },
     });
   }
@@ -215,6 +224,7 @@ export class App implements OnInit, OnDestroy {
     this.isAiSpeaking = true;
     this.voiceService.speak(question, () => {
       this.isAiSpeaking = false;
+      this.cdr.markForCheck();
     });
   }
 
@@ -228,6 +238,9 @@ export class App implements OnInit, OnDestroy {
       this.voiceService.cancelSpeaking();
       this.voiceService.startListening((text) => {
         this.userInput += (this.userInput ? ' ' : '') + text;
+        this.cdr.markForCheck();
+      }, () => {
+        this.cdr.markForCheck();
       });
     }
   }
